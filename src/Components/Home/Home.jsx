@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useState } from 'react';
-
 import Sidebar from '../Layout/Sidebar/Sidebar';
 import Navbar from '../Layout/Navbar/Navbar';
 
@@ -31,7 +30,7 @@ export default function Home() {
       case 'adjective': return <Adjective />;
       case 'verb': return <Verb />;
       case 'adverb': return <Adverb />;
-      case 'determiner': return <Determiner/>
+      case 'determiner': return <Determiner />;
       case 'conjunction': return <Conjunction />;
       case 'tenses': return <Tenses />;
       case 'speech': return <Speech />;
@@ -39,23 +38,31 @@ export default function Home() {
       case 'preposition': return <Prepositions />;
       case 'compoundWord': return <CompoundWord />;
       case 'mixPracticeSheet': return <MixPracticeSheet />;
-      default:
-        return <Verb/>;
+      default: return <Verb />;
     }
   };
 
   return (
     <div className="flex h-screen overflow-hidden relative">
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-30 w-64 transform bg-white border-r transition-transform duration-200 ease-in-out 
-        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-        md:translate-x-0 md:static md:inset-0`}>
-        <Sidebar currentView={currentView} setCurrentView={setCurrentView} isSidebarOpen={isSidebarOpen} />
-      </div>
+      <Sidebar
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        isSidebarOpen={isSidebarOpen}
+        closeSidebar={() => setIsSidebarOpen(false)}
+      />
+
+      {/* Overlay for mobile */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
 
       {/* Main Area */}
       <div className="flex-1 flex flex-col overflow-hidden w-full">
-        <Navbar setCurrentView={setCurrentView} onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
+        <Navbar onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
         <main className="flex-1 overflow-y-auto bg-gray-100">
           {renderPage()}
         </main>
