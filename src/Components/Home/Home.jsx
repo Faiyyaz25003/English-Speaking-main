@@ -63,7 +63,7 @@ export default function Home() {
       {/* Main Area */}
       <div className="flex-1 flex flex-col overflow-hidden w-full">
         <Navbar onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
-        <main className="flex-1 overflow-y-auto bg-gray-100">
+        <main className="flex-1 md:ml-[258px] overflow-y-auto bg-gray-100">
           {renderPage()}
         </main>
       </div>
