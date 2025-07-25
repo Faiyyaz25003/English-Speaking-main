@@ -1,19 +1,22 @@
+
 'use client';
 import { useState } from 'react';
 import { Users, BookOpen, Sparkles, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 import SpeechPraticeSheet1 from './SpeechPraticeSheet1';
 import SpeechPraticeSheet2 from './SpeechPraticeSheet2';
 import SpeechDefination from './SpeechDefination';
 
 const sheets = [
-    {
+  {
     title: 'Speech Definition',
     component: 'sheet1',
     description: 'Practice direct and indirect speech conversions.',
     icon: Users,
     color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
-    progress: 0
+    progress: 0,
   },
   {
     title: 'Direct and Indirect Speech: Practice Sheet 1',
@@ -22,7 +25,7 @@ const sheets = [
     icon: Users,
     color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
-    progress: 0
+    progress: 0,
   },
   {
     title: 'Direct and Indirect Speech: Sheet 2',
@@ -31,7 +34,7 @@ const sheets = [
     icon: BookOpen,
     color: 'bg-blue-500',
     bgColor: 'bg-blue-50',
-    progress: 0
+    progress: 0,
   },
 ];
 
@@ -55,6 +58,7 @@ export default function Speech() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
       {!selectedSheet ? (
         <div className="max-w-6xl mx-auto px-6 py-12">
+          {/* Heading */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-gradient-to-br from-purple-500 to-blue-600 p-4 rounded-2xl shadow-lg">
@@ -69,6 +73,7 @@ export default function Speech() {
             </p>
           </div>
 
+          {/* Instructions */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 text-lg text-gray-600">
               <span className="text-yellow-500">⭐</span>
@@ -77,23 +82,37 @@ export default function Speech() {
             </div>
           </div>
 
+          {/* Animated Cards */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sheets.map((sheet, idx) => {
               const IconComponent = sheet.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   className={`${sheet.bgColor} flex flex-col justify-between h-full rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 group relative overflow-hidden`}
                   onClick={() => setSelectedSheet(sheet.component)}
                 >
+                  {/* Background effects */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+
+                  {/* Number */}
                   <div className="absolute top-6 right-6 text-6xl font-bold text-black/5">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
-                  <div className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+
+                  {/* Icon */}
+                  <div
+                    className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
+
+                  {/* Title & Description */}
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
                       {sheet.title}
@@ -102,6 +121,8 @@ export default function Speech() {
                       {sheet.description}
                     </p>
                   </div>
+
+                  {/* Progress Bar */}
                   <div className="mb-4">
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div
@@ -110,14 +131,17 @@ export default function Speech() {
                       ></div>
                     </div>
                   </div>
+
+                  {/* Button */}
                   <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-all duration-200 shadow-sm group-hover:shadow-md">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
+          {/* Footer */}
           <div className="text-center mt-16">
             <p className="text-gray-500">
               Complete these worksheets to master direct and indirect speech! 🎯
@@ -140,9 +164,7 @@ export default function Speech() {
             </div>
           </div>
 
-          <div className="max-w-6xl mx-auto px-6 py-8">
-            {renderSheet()}
-          </div>
+          <div className="max-w-6xl mx-auto px-6 py-8">{renderSheet()}</div>
         </div>
       )}
     </div>

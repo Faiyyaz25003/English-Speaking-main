@@ -1,34 +1,40 @@
+
 'use client';
 import { useState } from 'react';
 import { Users, BookOpen, Sparkles, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion'; // Import framer motion
+
 import CompoundWordsPracticeSheet1 from './CompoundWordsPraticeSheet1';
 import CompoundWordsPracticeSheet2 from './CompoundWordsPraticeSheet2';
 import CompoundWordDefination from './CompoundWordDefination';
 
 const sheets = [
-   {
+  {
     title: 'Compound Words Defination',
     component: 'sheet1',
     description: 'Learn and practice forming compound words easily.',
-    icon: Users, color: 'bg-purple-500',
+    icon: Users,
+    color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
-    progress: 0
+    progress: 0,
   },
   {
     title: 'Compound Words Practice Sheet 1',
     component: 'sheet2',
     description: 'Learn and practice forming compound words easily.',
-    icon: Users, color: 'bg-purple-500',
+    icon: Users,
+    color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
-    progress: 0
+    progress: 0,
   },
   {
     title: 'Compound Words Practice Sheet 2',
     component: 'sheet3',
     description: 'Advance your understanding of compound words with exercises.',
-    icon: BookOpen, color: 'bg-blue-500',
+    icon: BookOpen,
+    color: 'bg-blue-500',
     bgColor: 'bg-blue-50',
-    progress: 0
+    progress: 0,
   },
 ];
 
@@ -39,20 +45,27 @@ export default function CompoundWords() {
     switch (selectedSheet) {
       case 'sheet1':
         return <CompoundWordDefination />;
-        case 'sheet2':
-          return <CompoundWordsPracticeSheet1 />;
-        case 'sheet3':
-          return <CompoundWordsPracticeSheet2 />;
-        default:
-          return null;
-      }
-    };
+      case 'sheet2':
+        return <CompoundWordsPracticeSheet1 />;
+      case 'sheet3':
+        return <CompoundWordsPracticeSheet2 />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
       {!selectedSheet ? (
         <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="text-center mb-12">
+          {/* Header Animation */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="flex items-center justify-center mb-6">
               <div className="bg-gradient-to-br from-purple-500 to-blue-600 p-4 rounded-2xl shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
@@ -64,24 +77,36 @@ export default function CompoundWords() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Practice forming and identifying compound words with engaging worksheets.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="text-center mb-12">
+          {/* Subtext Animation */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="flex items-center justify-center gap-2 text-lg text-gray-600">
               <span className="text-yellow-500">⭐</span>
               <span>Choose a worksheet to begin your learning journey</span>
               <span className="text-yellow-500">⭐</span>
             </div>
-          </div>
+          </motion.div>
 
+          {/* Cards with Staggered Animation */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sheets.map((sheet, idx) => {
               const IconComponent = sheet.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
                   className={`${sheet.bgColor} flex flex-col justify-between h-full rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 group relative overflow-hidden`}
                   onClick={() => setSelectedSheet(sheet.component)}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
@@ -110,16 +135,23 @@ export default function CompoundWords() {
                   <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-all duration-200 shadow-sm group-hover:shadow-md">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
-          <div className="text-center mt-16">
+          {/* Footer Animation */}
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <p className="text-gray-500">
               Complete these worksheets to master compound words! 🎯
             </p>
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div className="min-h-screen bg-white">

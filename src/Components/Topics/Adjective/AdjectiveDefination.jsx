@@ -7,8 +7,8 @@ const AdjectiveDefinition = () => {
       
       {/* Title Section Matching the Image */}
       <div className="flex items-center space-x-2 mb-4">
-        <span className="text-2xl">🌟</span>
-        <h1 className="text-3xl font-extrabold text-red-600">Adjective</h1>
+        <span className="md:text-3xl sm:text-2xl">🌟</span>
+        <h1 className="md:text-3xl sm:text-2xl font-extrabold text-red-600">Adjective</h1>
       </div>
       <hr className="border-t-4 border-purple-300 mb-8" />
 
@@ -16,7 +16,7 @@ const AdjectiveDefinition = () => {
       {/* Definition Section */}
       <div className="bg-purple-50 p-6 rounded-lg shadow mb-6">
         <p className="text-lg font-semibold mb-2">
-          <strong className="text-3xl font-bold text-purple-600">Understanding Adjective</strong>
+          <strong className="md:text-3xl sm:text-2xl font-bold text-purple-600">Understanding Adjective</strong>
         </p>
         <div className="mb-4">
           <p className="text-gray-700">
@@ -47,7 +47,7 @@ const AdjectiveDefinition = () => {
       <hr className="my-6" />
 
       {/* Example Sentences */}
-      <h2 className="text-3xl font-bold text-purple-600 mb-4">Examples of Adjectives</h2>
+      <h2 className="md:text-3xl sm:text-3xl font-bold text-purple-600 mb-4">Examples of Adjectives</h2>
       <p className="text-gray-700">
         Here are some example sentences showing how adjectives are used to describe nouns:
       </p>

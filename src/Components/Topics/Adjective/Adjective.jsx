@@ -10,6 +10,7 @@ import {
   ArrowLeft,
   Sparkles,
 } from 'lucide-react';
+import { motion } from 'framer-motion'; // <-- Animation import
 
 // Import all sheet components
 import Taste from './Taste';
@@ -102,7 +103,15 @@ export default function Adjective() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
       {!selectedSheet ? (
         <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="text-center mb-12">
+
+          {/* Header Section Animation */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="flex items-center justify-center mb-6">
               <div className="bg-gradient-to-br from-purple-500 to-blue-600 p-4 rounded-2xl shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
@@ -114,24 +123,36 @@ export default function Adjective() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Master different types of adjectives with interactive exercises and engaging activities
             </p>
-          </div>
+          </motion.div>
 
-          <div className="text-center mb-12">
+          {/* Subtext Animation */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="flex items-center justify-center gap-2 text-lg text-gray-600">
               <span className="text-yellow-500">⭐</span>
               <span>Choose a worksheet to begin your learning journey</span>
               <span className="text-yellow-500">⭐</span>
             </div>
-          </div>
+          </motion.div>
 
+          {/* Cards with Staggered Animation */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sheets.map((sheet, idx) => {
               const IconComponent = sheet.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
                   className={`${sheet.bgColor} flex flex-col justify-between h-full rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 group relative overflow-hidden`}
                   onClick={() => setSelectedSheet(sheet.component)}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
@@ -160,16 +181,23 @@ export default function Adjective() {
                   <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-all duration-200 shadow-sm group-hover:shadow-md">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
-          <div className="text-center mt-16">
+          {/* Footer Animation */}
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <p className="text-gray-500">
               Complete all worksheets to become an adjective expert! 🎯
             </p>
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div className="min-h-screen bg-white">

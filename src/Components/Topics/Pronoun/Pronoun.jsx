@@ -1,20 +1,15 @@
+
 'use client';
 import { useState } from 'react';
-import {
-  Users,
-  BookOpen,
-  Sparkles,
-  ArrowLeft,
-} from 'lucide-react';
-
+import { Users, BookOpen, Sparkles, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 import PronounDefinition from './PronounDefination';
 import PronounPracticeSheet1 from './PronounsPracticeSheet1';
 import PronounsPracticeSheet2 from './PronounsPracticeSheet2';
 
-
 const sheets = [
-   {
+  {
     title: 'Pronouns Defination',
     key: 'sheet1',
     component: PronounDefinition,
@@ -48,7 +43,7 @@ const sheets = [
 
 export default function Pronoun() {
   const [selectedKey, setSelectedKey] = useState(null);
-  const selectedSheet = sheets.find(sheet => sheet.key === selectedKey);
+  const selectedSheet = sheets.find((sheet) => sheet.key === selectedKey);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
@@ -78,24 +73,37 @@ export default function Pronoun() {
             </div>
           </div>
 
-          {/* Sheet Cards */}
+          {/* Sheet Cards with Animation */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sheets.map((sheet, idx) => {
               const IconComponent = sheet.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   className={`${sheet.bgColor} flex flex-col justify-between h-full rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 group relative overflow-hidden`}
                   onClick={() => setSelectedKey(sheet.key)}
                 >
+                  {/* Background Effects */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+
+                  {/* Number */}
                   <div className="absolute top-6 right-6 text-6xl font-bold text-black/5">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
-                  <div className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+
+                  {/* Icon */}
+                  <div
+                    className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                  >
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
+
+                  {/* Title & Description */}
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
                       {sheet.title}
@@ -104,6 +112,8 @@ export default function Pronoun() {
                       {sheet.description}
                     </p>
                   </div>
+
+                  {/* Progress Bar */}
                   <div className="mb-4">
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div
@@ -112,14 +122,17 @@ export default function Pronoun() {
                       ></div>
                     </div>
                   </div>
+
+                  {/* Button */}
                   <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
+          {/* Footer */}
           <div className="text-center mt-16">
             <p className="text-gray-500">Complete all worksheets to become a noun expert! 🎯</p>
           </div>
