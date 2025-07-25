@@ -98,7 +98,7 @@ export default function MixPracticeSheet() {
                       ></div>
                     </div>
                   </div>
-                  <button className="w-full bg-white text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-all duration-200 shadow-sm group-hover:shadow-md">
+                  <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-all duration-200 shadow-sm group-hover:shadow-md">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
                 </div>

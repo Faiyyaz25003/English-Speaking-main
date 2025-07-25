@@ -28,7 +28,7 @@ export default function Navbar({ onMenuToggle }) {
 
         {/* Logo / Title */}
         <span className="text-2xl font-extrabold tracking-tight flex items-center gap-1">
-          <span className="text-purple-400 text-3xl hover:scale-110 transition-transform duration-300">
+          <span className="text-purple-400  text-3xl hover:scale-110 transition-transform duration-300">
             Communicative
           </span>
           <span className="text-pink-400 text-2xl hover:scale-110 transition-transform duration-300">

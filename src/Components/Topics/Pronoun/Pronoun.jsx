@@ -112,7 +112,7 @@ export default function Pronoun() {
                       ></div>
                     </div>
                   </div>
-                  <button className="w-full bg-white text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-100">
+                  <button className="w-full bg-purple-500 hover:bg-pink-400 text-gray-700 font-semibold py-3 px-6 rounded-xl">
                     {sheet.progress > 0 ? 'Continue' : 'Start'}
                   </button>
                 </div>
