@@ -14,11 +14,21 @@ import IrregularVerbs from './IrregularVErbs';
 import MostUsed from './MostUsed';
 import TensesAndForms from './TensesAndForms';
 import VerbDefination from './VerbDefination';
+import VerbsChart from './VerbChart';
 
 const sheets = [
   {
     title: 'Verbs Defination',
     component: 'verbDefiantion',
+    description: 'Learn commonly used irregular verbs',
+    icon: Users,
+    color: 'bg-purple-500',
+    bgColor: 'bg-purple-50',
+    progress: 0,
+  },
+  {
+    title: 'Verbs Chart',
+    component: 'VerbChart',
     description: 'Learn commonly used irregular verbs',
     icon: Users,
     color: 'bg-purple-500',
@@ -61,6 +71,8 @@ export default function Verb() {
     switch (selectedSheet) {
       case 'verbDefiantion':
         return <VerbDefination />;
+      case 'VerbChart':
+        return <VerbsChart />;
       case 'IrregularVerbs':
         return <IrregularVerbs />;
       case 'TensesAndForms':
