@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 import {
@@ -10,17 +9,19 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-import IrregularVerbs from './IrregularVErbs';
+// Importing all components correctly
+import IrregularVerbs from './IrregularVerbs';
 import MostUsed from './MostUsed';
 import TensesAndForms from './TensesAndForms';
 import VerbDefination from './VerbDefination';
 import VerbsChart from './VerbChart';
+import RegularOrIrregularVerbs from './RegularOrIrregularVerbs'; // ✅ Missing import added
 
 const sheets = [
   {
     title: 'Verbs Defination',
     component: 'verbDefiantion',
-    description: 'Learn commonly used irregular verbs',
+    description: 'Learn the basic definition of verbs',
     icon: Users,
     color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
@@ -29,7 +30,16 @@ const sheets = [
   {
     title: 'Verbs Chart',
     component: 'VerbChart',
-    description: 'Learn commonly used irregular verbs',
+    description: 'Explore verb groups and structure',
+    icon: Users,
+    color: 'bg-purple-500',
+    bgColor: 'bg-purple-50',
+    progress: 0,
+  },
+  {
+    title: 'Regular or Irregular',
+    component: 'RegularOrIrregularVerbs',
+    description: 'Differentiate between regular and irregular verbs',
     icon: Users,
     color: 'bg-purple-500',
     bgColor: 'bg-purple-50',
@@ -73,6 +83,8 @@ export default function Verb() {
         return <VerbDefination />;
       case 'VerbChart':
         return <VerbsChart />;
+      case 'RegularOrIrregularVerbs':
+        return <RegularOrIrregularVerbs />;
       case 'IrregularVerbs':
         return <IrregularVerbs />;
       case 'TensesAndForms':
@@ -136,13 +148,11 @@ export default function Verb() {
                   </div>
 
                   {/* Icon */}
-                  <div
-                    className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                  >
+                  <div className={`${sheet.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
 
-                  {/* Title & Desc */}
+                  {/* Title & Description */}
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
                       {sheet.title}
@@ -180,6 +190,7 @@ export default function Verb() {
         </div>
       ) : (
         <div className="min-h-screen bg-white">
+          {/* Back Button */}
           <div className="bg-white shadow-sm border-b">
             <div className="max-w-6xl mx-auto px-6 py-4">
               <button
@@ -194,6 +205,7 @@ export default function Verb() {
             </div>
           </div>
 
+          {/* Render Selected Component */}
           <div className="max-w-6xl mx-auto px-6 py-8">{renderSheet()}</div>
         </div>
       )}
