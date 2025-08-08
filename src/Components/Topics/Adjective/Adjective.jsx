@@ -15,9 +15,9 @@ import { motion } from 'framer-motion'; // <-- Animation import
 // Import all sheet components
 import Taste from './Taste';
 import ColorsSheet from './ColorsSheet';
-import PersonalitySheet from './personalitySheet';
-import FeelingsSheet from './feelingsSheet';
-import AdjectiveSheetTime from './adjectiveSheetTime';
+import PersonalitySheet from './PersonalitySheet';
+import FeelingsSheet from './FeelingsSheet';
+import AdjectiveSheetTime from './AdjectiveSheetTime';
 import AdjectiveDefination from './AdjectiveDefination';
 
 const sheets = [
