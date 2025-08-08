@@ -11,6 +11,7 @@ export default function Navbar({ onMenuToggle }) {
   const handleLogout = () => {
     localStorage.clear();
     router.push('/login');
+    
   };
 
   return (
