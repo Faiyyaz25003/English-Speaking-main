@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import { BookOpen, Rocket, Brain, Globe, Code, Laptop } from "lucide-react";
 
 // Grid item component
@@ -95,17 +95,6 @@ export default function SelfLearning() {
           />
         </div>
       </div>
-      <div className="mb-6 flex justify-center">
-                <div className="overflow-hidden rounded-xl shadow-2xl">
-                  <Image
-                     src="/selfLearning.png"   // ✅ your uploaded image
-                     alt="selfLearning"
-                     className="rounded-xl transform transition-transform duration-500 hover:scale-110 hover:shadow-2xl"
-                     width={650}
-                     height={850}
-                  />
-                </div>
-              </div>
     </div>
   );
 }
