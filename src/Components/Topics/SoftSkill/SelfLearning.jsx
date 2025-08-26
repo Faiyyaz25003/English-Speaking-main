@@ -98,8 +98,8 @@ export default function SelfLearning() {
       <div className="mb-6 flex justify-center">
                 <div className="overflow-hidden rounded-xl shadow-2xl">
                   <Image
-                     src="/selflearning.png"   // ✅ your uploaded image
-                     alt="selflearning"
+                     src="/selfLearning.png"   // ✅ your uploaded image
+                     alt="selfLearning"
                      className="rounded-xl transform transition-transform duration-500 hover:scale-110 hover:shadow-2xl"
                      width={650}
                      height={850}
