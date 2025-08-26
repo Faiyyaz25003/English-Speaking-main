@@ -18,6 +18,7 @@ import Prepositions from '../Topics/Preposition/Preposition';
 import CompoundWord from '../Topics/CompoundWord/CompoundWord';
 import MixPracticeSheet from '../Topics/MixPracticeSheet/MixPracticeSheet';
 import Determiner from '../Topics/Determiner/Determiner';
+import SoftSkill from '../Topics/SoftSkill/SoftSkill';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState('noun');
@@ -38,6 +39,7 @@ export default function Home() {
       case 'preposition': return <Prepositions />;
       case 'compoundWord': return <CompoundWord />;
       case 'mixPracticeSheet': return <MixPracticeSheet />;
+      case 'SoftSkill': return <SoftSkill />;
       default: return <Verb />;
     }
   };

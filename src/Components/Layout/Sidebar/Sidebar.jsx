@@ -25,6 +25,7 @@ const Sidebar = ({ currentView, setCurrentView, isSidebarOpen, closeSidebar }) =
     { id: 'punctuation', label: 'Punctuation', icon: <PenLine size={18} /> },
     { id: 'compoundWord', label: 'Compound Word', icon: <PencilLine size={18} /> },
     { id: 'mixPracticeSheet', label: 'Mix Practice Sheet', icon: <PencilLine size={18} /> },
+        { id: 'SoftSkill', label: 'Soft Skill', icon: <PencilLine size={18} /> },
   ];
 
   return (
